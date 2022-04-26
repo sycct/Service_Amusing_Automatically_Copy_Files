@@ -43,7 +43,7 @@ if __name__ == "__main__":
     scheduler = BlockingScheduler(timezone="Asia/Shanghai")
     copy_file = AutomaticallyCopyFiles()
     # 星期一早上 5：30：30 运行 automatically_update 自动更新
-    scheduler.add_job(copy_file.copy_files_run, 'interval', minute='1')
+    scheduler.add_job(copy_file.copy_files_run, 'interval', minutes='1')
     # 开始运行调度器
     try:
         scheduler.start()
