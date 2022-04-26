@@ -35,6 +35,7 @@ class FileUtil(object):
         remote_password = os.environ.get('TARGET_PASSWORD')
         remote_port = int(os.environ.get('TARGET_PROT'))
         for item in file_list:
+            print(item)
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh.connect(remote_host, username=remote_user, password=remote_password, port=remote_port)
