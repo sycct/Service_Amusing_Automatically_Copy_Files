@@ -40,9 +40,7 @@ class FileUtil(object):
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh.connect(remote_host, username=remote_user, password=remote_password, port=remote_port)
             sftp = ssh.open_sftp()
-            # 本地文件路径
-            local_file_path = os.path.join(base_path, item)
             # 由于远程文件与本地文件一样，所以目录也是一样的
-            sftp.put(localpath=local_file_path, remotepath=local_file_path)
+            sftp.put(localpath=item, remotepath=item)
             sftp.close()
             ssh.close()

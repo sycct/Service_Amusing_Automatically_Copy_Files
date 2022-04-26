@@ -28,12 +28,12 @@ class AutomaticallyCopyFiles(object):
         copy_file_list = []
         for file in file_list:
             # 获取当前文件
-            file = os.path.getctime(os.path.join(self._base_path, file))
+            get_file_path = os.path.join(self._base_path, file)
             # 当前文件创建时间，将时间戳转换成时间
-            get_file_crate_time = datetime.fromtimestamp(file)
+            get_file_crate_time = datetime.fromtimestamp(os.path.getctime(get_file_path))
             if get_file_crate_time > time_different:
                 # 如果是一分钟以内新建的文件加入文件列表
-                copy_file_list.append(file)
+                copy_file_list.append(get_file_path)
         # 将需要复制的文件复制到远程服务器
         if copy_file_list:
             self._init_file.copy_file(copy_file_list, self._base_path)
